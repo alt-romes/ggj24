@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2puiivcyakh3"]
+
+[ext_resource type="AudioStream" uid="uid://tkyf6g1q0xmw" path="res://Sound/makemelaugh_darker_extended.mp3" id="1_2v1go"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_2v1go")
+autoplay = true
