@@ -1,21 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://dsew42i6hita3"]
+[gd_scene load_steps=6 format=3 uid="uid://dsew42i6hita3"]
 
 [ext_resource type="PackedScene" uid="uid://c41pfexo2afa7" path="res://player.tscn" id="1_ft3r3"]
 [ext_resource type="Texture2D" uid="uid://cnorpy48aqqiv" path="res://Sprite/crosshair.png" id="2_3elqw"]
 [ext_resource type="AudioStream" uid="uid://dk5alsiuebsxo" path="res://Sound/footsteps.mp3" id="2_bu2cy"]
+[ext_resource type="PackedScene" uid="uid://bmcoermmd6lqu" path="res://body.tscn" id="3_xbifw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s5b3c"]
 size = Vector3(31.412, 1, 41.2583)
 
 [sub_resource type="BoxMesh" id="BoxMesh_j7i8g"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_k7kk0"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pfvms"]
-albedo_color = Color(1, 0.388235, 0.427451, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ocys6"]
-size = Vector3(0.355255, 1, 0.36499)
 
 [node name="World" type="Node3D"]
 
@@ -46,14 +39,5 @@ layout_mode = 2
 texture = ExtResource("2_3elqw")
 stretch_mode = 3
 
-[node name="DeadBody" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.26483, -5.26674)
-
-[node name="Body" type="MeshInstance3D" parent="DeadBody"]
-transform = Transform3D(0.351219, 0, 0, 0, 1, 0, 0, 0, 0.364742, 0, 0, 0)
-mesh = SubResource("BoxMesh_k7kk0")
-surface_material_override/0 = SubResource("StandardMaterial3D_pfvms")
-
-[node name="Collision" type="CollisionShape3D" parent="DeadBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00163269, 0, -0.000610352)
-shape = SubResource("BoxShape3D_ocys6")
+[node name="DeadBody" parent="." instance=ExtResource("3_xbifw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.80769, -7.00942)

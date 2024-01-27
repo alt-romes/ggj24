@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://3gcpdbgne8tk"]
+[gd_scene load_steps=7 format=3 uid="uid://c46wf5dm8c2px"]
 
-[ext_resource type="PackedScene" path="res://player.tscn" id="1_eoeiw"]
-[ext_resource type="PackedScene" uid="uid://cvyvye0am0p2w" path="res://Stage.tscn" id="2_ljblw"]
+[ext_resource type="PackedScene" uid="uid://c41pfexo2afa7" path="res://player.tscn" id="1_eoeiw"]
+[ext_resource type="PackedScene" uid="uid://dfxlf2r8leltr" path="res://Stage.tscn" id="2_ljblw"]
 [ext_resource type="PackedScene" uid="uid://b3erebdcn5tnj" path="res://Models/Jester/Jester.tscn" id="3_e2ysg"]
 [ext_resource type="Material" uid="uid://cexpvavap38jh" path="res://Materials/GreenGrid.tres" id="3_pi4ds"]
 [ext_resource type="Material" uid="uid://sdmrf2rdwfcp" path="res://Materials/GrayGrid.tres" id="4_xevje"]
