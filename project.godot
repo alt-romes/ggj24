@@ -15,6 +15,14 @@ run/main_scene="res://Ragdoll.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[file_customization]
+
+folder_colors={
+"res://Materials/": "blue",
+"res://Shaders/": "red",
+"res://Sprite/": "yellow"
+}
+
 [input]
 
 Left={

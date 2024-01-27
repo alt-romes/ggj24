@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://3gcpdbgne8tk"]
+
+[ext_resource type="Material" uid="uid://d200bqk0so1h0" path="res://Materials/OrangeGrid.tres" id="1_vjjp4"]
+
+[sub_resource type="Environment" id="Environment_dy2mx"]
+background_mode = 1
+
+[node name="Root" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dy2mx")
+
+[node name="Arena" type="Node3D" parent="."]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Arena"]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Arena/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0406685, 0)
+radius = 20.0
+material = ExtResource("1_vjjp4")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.53572, 56.276)
