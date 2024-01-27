@@ -24,6 +24,8 @@ BackgroundAuido="*res://background_auido.tscn"
 window/size/viewport_width=640
 window/size/viewport_height=400
 
+window/size/mode=2
+
 [file_customization]
 
 folder_colors={
@@ -81,5 +83,5 @@ outline_width={
 }
 outline_color={
 "type": "color",
-"value": Color(0, 0, 0, 1)
+"value": Color(0.0126459, 0.0126459, 0.0126459, 1)
 }
