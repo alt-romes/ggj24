@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://7125teb0eaaa"]
+[gd_scene load_steps=3 format=3 uid="uid://bocg136tahw2w"]
 
 [ext_resource type="Script" path="res://Scripts/Head.gd" id="1_u6273"]
 [ext_resource type="PackedScene" uid="uid://drgr3t8e43uu5" path="res://Models/Faces/HappyFace.tscn" id="2_he80q"]

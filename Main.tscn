@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://3gcpdbgne8tk"]
 
-[ext_resource type="PackedScene" uid="uid://cwnc3e4a24n5c" path="res://player.tscn" id="1_eoeiw"]
-[ext_resource type="PackedScene" uid="uid://cvyvye0am0p2w" path="res://Stage.tscn" id="2_ljblw"]
+[ext_resource type="PackedScene" uid="uid://c41pfexo2afa7" path="res://player.tscn" id="1_eoeiw"]
+[ext_resource type="PackedScene" uid="uid://dfxlf2r8leltr" path="res://Stage.tscn" id="2_ljblw"]
 [ext_resource type="PackedScene" uid="uid://b3erebdcn5tnj" path="res://Models/Jester/Jester.tscn" id="3_e2ysg"]
 [ext_resource type="Material" uid="uid://cexpvavap38jh" path="res://Materials/GreenGrid.tres" id="3_pi4ds"]
 [ext_resource type="Material" uid="uid://sdmrf2rdwfcp" path="res://Materials/GrayGrid.tres" id="4_xevje"]
-[ext_resource type="PackedScene" uid="uid://7125teb0eaaa" path="res://Head.tscn" id="6_7a5se"]
+[ext_resource type="PackedScene" uid="uid://bocg136tahw2w" path="res://Head.tscn" id="6_7a5se"]
 
 [sub_resource type="Environment" id="Environment_dy2mx"]
 background_mode = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwnc3e4a24n5c"]
+[gd_scene load_steps=5 format=3 uid="uid://c41pfexo2afa7"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_ruoke"]
 [ext_resource type="AudioStream" uid="uid://dk5alsiuebsxo" path="res://Sound/footsteps.mp3" id="2_kw1jb"]
