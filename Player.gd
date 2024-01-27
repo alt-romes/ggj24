@@ -4,6 +4,7 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const LOOKAROUND_SPEED = 0.002
+const FORCE_OF_GRABING = 3
 
 var rot_x = 0
 var rot_y = 0
@@ -47,7 +48,7 @@ func _physics_process(delta):
 	move_and_slide()
 	if isHeld:
 		#deadBody.set_linear_velocity(dirVec)
-		deadBody.set_linear_velocity($Camera/Location.global_transform.origin - deadBody.global_transform.origin)
+		deadBody.set_linear_velocity(($Camera/Location.global_transform.origin - deadBody.global_transform.origin)*FORCE_OF_GRABING)
 	
 	
 func _input(event):
