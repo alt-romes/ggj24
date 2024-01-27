@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dsew42i6hita3"]
+[gd_scene load_steps=9 format=3 uid="uid://dsew42i6hita3"]
 
 [ext_resource type="PackedScene" uid="uid://c41pfexo2afa7" path="res://player.tscn" id="1_ft3r3"]
 [ext_resource type="Texture2D" uid="uid://cnorpy48aqqiv" path="res://Sprite/crosshair.png" id="2_3elqw"]
+[ext_resource type="AudioStream" uid="uid://dk5alsiuebsxo" path="res://Sound/footsteps.mp3" id="2_bu2cy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s5b3c"]
 size = Vector3(31.412, 1, 41.2583)
@@ -19,6 +20,9 @@ size = Vector3(0.355255, 1, 0.36499)
 [node name="World" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_ft3r3")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("2_bu2cy")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 

@@ -14,6 +14,10 @@ var isHeld
 var deadBody;
 var dirVec;
 
+#Foot steps variables
+var footSteps;
+var currFootStepsPos = 0;
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -21,6 +25,7 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
 	isHeld = false
 	deadBody = get_tree().get_root().get_node("World/DeadBody")
+	footSteps = self.get_node("AudioStreamPlayer")
 	
 func _process(delta):
 	input_dir = Input.get_vector("Left", "Right", "Forward", "Backward")
@@ -37,12 +42,25 @@ func _physics_process(delta):
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
+	var moving_x_or_z_not_y
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
+		if(velocity.y == 0):
+			moving_x_or_z_not_y = true
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+		moving_x_or_z_not_y = false
+		
+	if(moving_x_or_z_not_y):
+		if(!footSteps.playing):
+			footSteps.play()
+			footSteps.seek(currFootStepsPos)
+	else:
+		if(footSteps.playing):
+			currFootStepsPos = footSteps.get_playback_position()
+			footSteps.stop()
 
 	move_and_slide()
 	if isHeld:
