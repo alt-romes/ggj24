@@ -55,7 +55,7 @@ Space={
 
 specular_smoothness={
 "type": "float",
-"value": 0.05
+"value": 0.01
 }
 fresnel_smoothness={
 "type": "float",
@@ -63,7 +63,7 @@ fresnel_smoothness={
 }
 outline_width={
 "type": "float",
-"value": 20.0
+"value": 10.0
 }
 outline_color={
 "type": "color",
