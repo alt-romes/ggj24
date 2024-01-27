@@ -1,0 +1,81 @@
+[gd_scene load_steps=10 format=3 uid="uid://dsew42i6hita3"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_apq42"]
+[ext_resource type="Texture2D" uid="uid://cnorpy48aqqiv" path="res://Sprite/crosshair.png" id="2_3elqw"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_357nl"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dc15l"]
+height = 2.0055
+
+[sub_resource type="BoxMesh" id="BoxMesh_k7kk0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pfvms"]
+albedo_color = Color(1, 0.388235, 0.427451, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ocys6"]
+size = Vector3(0.355255, 1, 0.36499)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s5b3c"]
+size = Vector3(31.412, 1, 41.2583)
+
+[sub_resource type="BoxMesh" id="BoxMesh_j7i8g"]
+
+[node name="World" type="Node3D"]
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.61552, 0)
+script = ExtResource("1_apq42")
+
+[node name="Mesh" type="MeshInstance3D" parent="Player"]
+mesh = SubResource("CapsuleMesh_357nl")
+
+[node name="Collision" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_dc15l")
+
+[node name="Camera" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.633072, 0.00818872)
+
+[node name="RayCast" type="RayCast3D" parent="Player/Camera"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.588677, -0.00818872)
+target_position = Vector3(0, -2, 0)
+
+[node name="DeadBody" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.32036, -5.26674)
+
+[node name="Body" type="MeshInstance3D" parent="DeadBody"]
+transform = Transform3D(0.351219, 0, 0, 0, 1, 0, 0, 0, 0.364742, 0, 0, 0)
+mesh = SubResource("BoxMesh_k7kk0")
+surface_material_override/0 = SubResource("StandardMaterial3D_pfvms")
+
+[node name="LeftHand" type="MeshInstance3D" parent="DeadBody"]
+
+[node name="LeftForearm" type="MeshInstance3D" parent="DeadBody"]
+
+[node name="LeftBisep" type="MeshInstance3D" parent="DeadBody"]
+
+[node name="Collision" type="CollisionShape3D" parent="DeadBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00163269, 0, -0.000610352)
+shape = SubResource("BoxShape3D_ocys6")
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="Collision" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0040431, 0, -0.00507355)
+shape = SubResource("BoxShape3D_s5b3c")
+
+[node name="Mesh" type="MeshInstance3D" parent="Ground"]
+transform = Transform3D(31.3123, 0, 0, 0, 1, 0, 0, 0, 41.3394, 0, 0, 0)
+mesh = SubResource("BoxMesh_j7i8g")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer"]
+layout_mode = 2
+texture = ExtResource("2_3elqw")
+stretch_mode = 3
