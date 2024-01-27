@@ -35,5 +35,5 @@ layout_mode = 2
 texture = ExtResource("2_3elqw")
 stretch_mode = 3
 
-[node name="DeadBody" parent="." instance=ExtResource("3_xbifw")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.68701, -4.78796)
+[node name="body2" parent="." instance=ExtResource("3_xbifw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.216289, 1.60319, -3)
