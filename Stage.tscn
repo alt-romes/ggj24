@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvyvye0am0p2w"]
+[gd_scene load_steps=3 format=3 uid="uid://dfxlf2r8leltr"]
 
 [ext_resource type="Material" uid="uid://d200bqk0so1h0" path="res://Materials/OrangeGrid.tres" id="1_6i178"]
+[ext_resource type="Material" uid="uid://bdfq4of26dts8" path="res://Materials/floor.tres" id="2_hgtbh"]
 
 [node name="CSGCombiner3D" type="CSGCombiner3D"]
 use_collision = true
@@ -81,4 +82,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -5.25, -71.362)
 radius = 50.0
 height = 20.0
 sides = 20
-material = ExtResource("1_6i178")
+material = ExtResource("2_hgtbh")
