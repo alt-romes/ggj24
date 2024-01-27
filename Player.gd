@@ -28,8 +28,8 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-	if not deadBody.is_on_floor():
-		deadBody.velocity.y -= gravity * delta
+	#if not deadBody.is_on_floor():
+		#deadBody.velocity.y -= gravity * delta
 
 	# Handle jump.
 	if Input.is_action_just_pressed("Space") and is_on_floor():
@@ -45,7 +45,7 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
-	deadBody.move_and_slide()
+	#deadBody.move_and_slide()
 	
 func _input(event):  		
 	if event is InputEventMouseMotion:
