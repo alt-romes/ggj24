@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwnc3e4a24n5c"]
+[gd_scene load_steps=5 format=3 uid="uid://cwnc3e4a24n5c"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_ruoke"]
+[ext_resource type="AudioStream" uid="uid://dk5alsiuebsxo" path="res://Sound/footsteps.mp3" id="2_kw1jb"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_357nl"]
 
@@ -26,3 +27,6 @@ target_position = Vector3(0, -2, 0)
 
 [node name="Location" type="Node3D" parent="Camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.85304)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_kw1jb")

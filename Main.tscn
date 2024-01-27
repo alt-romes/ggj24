@@ -99,7 +99,7 @@ light_energy = 1.3
 light_specular = 0.76
 spot_range = 30.0
 spot_attenuation = 0.353554
-spot_angle = 25.0
+spot_angle = 19.0
 spot_angle_attenuation = 0.217637
 
 [node name="SpotLight3D6" type="SpotLight3D" parent="Lights"]
@@ -109,7 +109,7 @@ light_energy = 1.3
 light_specular = 0.76
 spot_range = 30.0
 spot_attenuation = 0.353554
-spot_angle = 25.0
+spot_angle = 19.0
 spot_angle_attenuation = 0.217637
 
 [node name="SpotLight3D7" type="SpotLight3D" parent="Lights"]
@@ -119,7 +119,7 @@ light_energy = 1.3
 light_specular = 0.76
 spot_range = 30.0
 spot_attenuation = 0.353554
-spot_angle = 25.0
+spot_angle = 19.0
 spot_angle_attenuation = 0.217637
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Lights"]
@@ -129,7 +129,7 @@ light_energy = 12.71
 light_volumetric_fog_energy = 0.68
 spot_range = 15.694
 spot_attenuation = 0.615572
-spot_angle = 19.07
+spot_angle = 19.0
 spot_angle_attenuation = 0.307786
 
 [node name="jester" parent="." node_paths=PackedStringArray("followTarget") instance=ExtResource("3_e2ysg")]
