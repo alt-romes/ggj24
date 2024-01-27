@@ -9,8 +9,10 @@ var rot_x = 0
 var rot_y = 0
 var input_dir
 var direction
+var deadDirection
 var isHeld
 var deadBody;
+var dirVec;
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -18,7 +20,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
 	isHeld = false
-	deadBody = $Camera/RayCast.get_tree().get_root().get_node("World/DeadBody")
+	deadBody = get_tree().get_root().get_node("World/DeadBody")
 	
 func _process(delta):
 	input_dir = Input.get_vector("Left", "Right", "Forward", "Backward")
@@ -28,8 +30,6 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-	#if not deadBody.is_on_floor():
-		#deadBody.velocity.y -= gravity * delta
 
 	# Handle jump.
 	if Input.is_action_just_pressed("Space") and is_on_floor():
@@ -45,9 +45,12 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
-	#deadBody.move_and_slide()
+	if isHeld:
+		#deadBody.set_linear_velocity(dirVec)
+		deadBody.set_linear_velocity($Camera/Location.global_transform.origin - deadBody.global_transform.origin)
 	
-func _input(event):  		
+	
+func _input(event):
 	if event is InputEventMouseMotion:
 		# modify accumulated mouse rotation
 		rot_x -= event.relative.x * LOOKAROUND_SPEED
@@ -55,11 +58,12 @@ func _input(event):
 		transform.basis = Basis() # reset rotation
 		rotate_object_local(Vector3(0, 1, 0), rot_x) # first rotate in Y
 		rotate_object_local(Vector3(1, 0, 0), rot_y) # then rotate in X
-		if isHeld:
-			deadBody.position = $Camera/RayCast.get_collision_point()
-	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		if $Camera/RayCast.is_colliding() and $Camera/RayCast.get_collider() == deadBody and event.is_pressed:
+	elif event is InputEventMouseButton:
+		if !isHeld and $Camera/RayCast.is_colliding() and $Camera/RayCast.get_collider() == deadBody and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			print("IS held");
 			isHeld = true
-		elif event.is_released:
+			#print($Camera);
+			#dirVec = ($Camera/Location.global_transform.origin - deadBody.global_transform.origin)
+		if Input.is_action_just_released("mouse0", false):
+			print("I released it");
 			isHeld = false

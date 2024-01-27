@@ -42,7 +42,7 @@ layout_mode = 2
 texture = ExtResource("2_3elqw")
 stretch_mode = 3
 
-[node name="DeadBody" type="CharacterBody3D" parent="."]
+[node name="DeadBody" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.26483, -5.26674)
 
 [node name="Body" type="MeshInstance3D" parent="DeadBody"]
