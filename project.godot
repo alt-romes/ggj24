@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 BackgroundAuido="*res://background_auido.tscn"
 
+[display]
+
+window/size/mode=2
+
 [file_customization]
 
 folder_colors={
@@ -76,5 +80,5 @@ outline_width={
 }
 outline_color={
 "type": "color",
-"value": Color(0, 0, 0, 1)
+"value": Color(0.0126459, 0.0126459, 0.0126459, 1)
 }
