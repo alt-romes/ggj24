@@ -165,13 +165,15 @@ followTarget = NodePath("../../../Player")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.7419, 0, 0)
 followTarget = NodePath("../../../Player")
 
-[node name="Follower9" parent="FirstRow/Center" node_paths=PackedStringArray("followTarget") instance=ExtResource("6_5pvjy")]
+[node name="Follower9" parent="FirstRow/Center" node_paths=PackedStringArray("followTarget", "neighbours") instance=ExtResource("6_5pvjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.9135, 0, -11.6432)
 followTarget = NodePath("../../../Player")
+neighbours = [NodePath("../../../FirstRow2/Center/Follower10"), NodePath("../../../FirstRow2/Center/Follower11"), NodePath("../../../FirstRow2/Center/Follower4")]
 
-[node name="Follower11" parent="FirstRow/Center" node_paths=PackedStringArray("followTarget") instance=ExtResource("6_5pvjy")]
+[node name="Follower11" parent="FirstRow/Center" node_paths=PackedStringArray("followTarget", "neighbours") instance=ExtResource("6_5pvjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.333, 0, -46.4129)
 followTarget = NodePath("../../../Player")
+neighbours = [NodePath("../../../FirstRow2/Center/Follower11")]
 
 [node name="Follower6" parent="FirstRow/Center" node_paths=PackedStringArray("followTarget") instance=ExtResource("6_5pvjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.8661, 0, -12.4584)
@@ -189,17 +191,19 @@ transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 2.42648, -0.16397
 [node name="Follower" parent="FirstRow2/Center" node_paths=PackedStringArray("followTarget") instance=ExtResource("6_5pvjy")]
 followTarget = NodePath("../../../Player")
 
-[node name="Follower4" parent="FirstRow2/Center" node_paths=PackedStringArray("followTarget") instance=ExtResource("6_5pvjy")]
+[node name="Follower4" parent="FirstRow2/Center" node_paths=PackedStringArray("followTarget", "neighbours") instance=ExtResource("6_5pvjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.0214, 0, 0)
 followTarget = NodePath("../../../Player")
+neighbours = [null]
 
 [node name="Follower10" parent="FirstRow2/Center" node_paths=PackedStringArray("followTarget") instance=ExtResource("6_5pvjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.3439, 0, -23.9316)
 followTarget = NodePath("../../../Player")
 
-[node name="Follower11" parent="FirstRow2/Center" node_paths=PackedStringArray("followTarget") instance=ExtResource("6_5pvjy")]
+[node name="Follower11" parent="FirstRow2/Center" node_paths=PackedStringArray("followTarget", "neighbours") instance=ExtResource("6_5pvjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.333, 0, -46.4129)
 followTarget = NodePath("../../../Player")
+neighbours = [NodePath("../../../FirstRow/Center/Follower11"), NodePath("../../../FirstRow/Center/Follower9"), NodePath("../Follower10")]
 
 [node name="Follower5" parent="FirstRow2/Center" node_paths=PackedStringArray("followTarget") instance=ExtResource("6_5pvjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.3212, 0, 0)

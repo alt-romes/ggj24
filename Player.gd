@@ -122,7 +122,7 @@ func mayReleaseThing() -> void:
 		thingHeld.axis_lock_angular_x = false
 		thingHeld.axis_lock_angular_y = false
 		thingHeld.axis_lock_angular_z = false
-		thingHeld.apply_central_impulse(Vector3(0, 10, 15)*THROW_VEL)
+		thingHeld.apply_central_impulse(Vector3(0, 5, 10)*THROW_VEL)
 		thingHeld.angular_velocity = Vector3(3, 0, 0)
 		thingHeld = null
 		#wheelDown = false

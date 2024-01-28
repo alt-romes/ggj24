@@ -16,6 +16,8 @@ const MAX_FIRE = 2
 @onready var unhappysound = $UnhappySound
 @onready var hurtsound = $HurtSound
 
+@export var neighbours: Array[Follower]
+
 # State:
 #	Unhappy: -1
 #	Neutral: 0
@@ -103,7 +105,11 @@ func setHappy() -> void:
 	face_happy.visible = true
 	#face_unhappy.visible = false
 	face_light.light_color = Color("00ffc1")
+	happysound.play()
+	
 
 func _on_was_touched() -> void:
+	for n in neighbours:
+		if n != null:
+			n.setHappy()
 	setUnhappy()
-	
