@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cvyvye0am0p2w"]
 
-[ext_resource type="Material" uid="uid://dukiehtksqubn" path="res://Materials/RedGrid.tres" id="1_lfkkx"]
-[ext_resource type="Material" uid="uid://j3afs4rqtovq" path="res://Materials/Wood.tres" id="2_hrv2x"]
+[ext_resource type="Material" path="res://Materials/RedGrid.tres" id="1_lfkkx"]
+[ext_resource type="Material" path="res://Materials/Wood.tres" id="2_hrv2x"]
 
 [node name="CSGCombiner3D" type="CSGCombiner3D"]
 use_collision = true

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c41pfexo2afa7" path="res://player.tscn" id="1_eoeiw"]
 [ext_resource type="PackedScene" uid="uid://cvyvye0am0p2w" path="res://Stage.tscn" id="2_ljblw"]
 [ext_resource type="PackedScene" uid="uid://b3erebdcn5tnj" path="res://Models/Jester/Jester.tscn" id="3_e2ysg"]
-[ext_resource type="Material" uid="uid://dukiehtksqubn" path="res://Materials/RedGrid.tres" id="3_q3ctx"]
+[ext_resource type="Material" path="res://Materials/RedGrid.tres" id="3_q3ctx"]
 [ext_resource type="PackedScene" uid="uid://biuitoloh60j3" path="res://Follower.tscn" id="6_5pvjy"]
 [ext_resource type="Shader" path="res://Shaders/Vignet.gdshader" id="8_i6xw8"]
 

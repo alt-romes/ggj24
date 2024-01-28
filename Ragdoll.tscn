@@ -21,7 +21,7 @@ target_position = Vector3(0, -2.98, 0)
 [node name="Location" parent="Player/Camera" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.82302)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player"]
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource("2_bu2cy")
 
 [node name="Ground" type="StaticBody3D" parent="."]
