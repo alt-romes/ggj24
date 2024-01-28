@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://biuitoloh60j3"]
+[gd_scene load_steps=9 format=3 uid="uid://biuitoloh60j3"]
 
 [ext_resource type="PackedScene" uid="uid://dei23eqbh0ak5" path="res://Models/Faces/NormalFace.tscn" id="1_bl85q"]
 [ext_resource type="Script" path="res://Follower.gd" id="1_x1sqy"]
@@ -6,13 +6,10 @@
 [ext_resource type="AudioStream" uid="uid://cdqx5w0w3ea07" path="res://Sound/FX/DorNoOutroLaugh.mp3" id="7_lms2d"]
 [ext_resource type="AudioStream" uid="uid://d1grsyxsxbr7v" path="res://Sound/FX/Decapitado2.mp3" id="8_73kkm"]
 [ext_resource type="AudioStream" uid="uid://cgld8uon48ubx" path="res://Sound/FX/DorEmMim.mp3" id="8_d2hje"]
-[ext_resource type="PackedScene" uid="uid://dti03n0qifg4g" path="res://AngryFace.tscn" id="10_q2dvn"]
+[ext_resource type="PackedScene" uid="uid://cev05drp7rp77" path="res://AngryFace.tscn" id="10_q2dvn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hctyg"]
 size = Vector3(10, 14.9443, 10)
-[node name="faces_unhappy" parent="." instance=ExtResource("10_q2dvn")]
-transform = Transform3D(1, -6.66424e-31, 2.91303e-38, 0, -4.37114e-08, -1, 6.66424e-31, 1, -4.37114e-08, 2.08165e-12, 10, -5.654)
-visible = false
 
 [node name="Follower" type="Node3D" groups=["face", "prop"]]
 script = ExtResource("1_x1sqy")
@@ -29,6 +26,9 @@ visible = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Head"]
 transform = Transform3D(0.999996, -0.0026878, 0, 0.0026878, 0.999996, 0, 0, 0, 1, -0.00679432, 10.6333, 2.60336)
 shape = SubResource("BoxShape3D_hctyg")
+
+[node name="faces_unhappy" parent="Head" instance=ExtResource("10_q2dvn")]
+transform = Transform3D(1, 0, -1.5246e-23, -1.5246e-23, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 10.2838, -4.7667)
 
 [node name="Light" type="SpotLight3D" parent="."]
 transform = Transform3D(1, -4.76458e-17, 1.75973e-16, 1.75973e-16, 0.504528, -0.863396, -4.76458e-17, 0.863396, 0.504528, 2.08165e-12, -3.04476, 12.286)
