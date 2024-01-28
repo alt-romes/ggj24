@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://sj7d4fhkm233"]
+[gd_scene load_steps=9 format=3 uid="uid://dei23eqbh0ak5"]
 
 [ext_resource type="Material" uid="uid://ct7bbmpviyvne" path="res://Shaders/Cell/CellShade.tres" id="2_iujp0"]
 
@@ -96,7 +96,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_50cux")
 
-[node name="faces_normal" type="MeshInstance3D"]
+[node name="faces_normal" type="Node3D"]
 
 [node name="Plane" type="MeshInstance3D" parent="."]
 transform = Transform3D(7.68, 0, 0, 0, 1, 0, 0, 0, 10.24, 0, 7.75615, 0)
