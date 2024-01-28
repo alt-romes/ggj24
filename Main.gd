@@ -9,7 +9,7 @@ extends Node3D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	timer.one_shot = true
-	timer.wait_time = 5.0
+	timer.wait_time = 3.0
 	add_child(timer)
 	timer.connect("timeout", _end_title_screen.bind(timer))
 	timer.start()
