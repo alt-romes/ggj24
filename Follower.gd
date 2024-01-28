@@ -8,7 +8,8 @@ var face_happy: Node3D
 var face_normal: Node3D
 var timeToFire: float
 
-@export var isHappy: bool = false
+var isHappy: bool = false
+var isUnhappy: bool = true
 
 
 @export var projetiles: Array[Node3D]
@@ -36,26 +37,35 @@ func _process(delta):
 		rotation.x = curr.x
 		rotation.z = curr.z
 		rotate_y(deg_to_rad(180))
+		
 	if isHappy:
 		face_happy.visible = true
 		face_normal.visible = false
 	else:
 		face_happy.visible = false
 		face_normal.visible = true
+		
+	if randf() > 0.9:
+		isUnhappy = true
 	
-	if timeToFire >= MAX_FIRE:
-		timeToFire = 0.0;
+	if isUnhappy:
+		var timer := Timer.new()
+		add_child(timer)
+		timer.wait_time = 2.0
+		timer.start()
+		timer.connect("timeout", _on_timer_timeout)
 		
-		# chosen projetile
-		assert(projetiles.size() > 0)
-		var i = randi() % projetiles.size()
 		
-		#if rand <= 0.333:
-		projetiles[i].position = projetileSpawns[i]
-		projetiles[i].rotation = Vector3.ZERO
-		projetiles[i].freeze = false
-		projetiles[i].visible = true
-		projetiles[i].apply_central_impulse(Vector3(0, 15, -20)*VEL)
-		projetiles[i].angular_velocity = Vector3(3, 0, 0)
-	else:
-		timeToFire += delta
+func _on_timer_timeout() -> void:
+	# chosen projetile
+	assert(projetiles.size() > 0)
+	var i = randi() % projetiles.size()
+	
+	projetiles[i].position = projetileSpawns[i]
+	projetiles[i].rotation = Vector3.ZERO
+	projetiles[i].freeze = false
+	projetiles[i].visible = true
+	projetiles[i].apply_central_impulse(Vector3(0, 15, -20)*VEL)
+	projetiles[i].angular_velocity = Vector3(3, 0, 0)
+	
+	isUnhappy = false

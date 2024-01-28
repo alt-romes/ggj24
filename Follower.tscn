@@ -39,3 +39,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.73942, 14.6481)
 
 [node name="brick" parent="." instance=ExtResource("6_u7pmm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.62258, 15.165)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
