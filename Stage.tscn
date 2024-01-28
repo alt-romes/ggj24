@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfxlf2r8leltr"]
+[gd_scene load_steps=3 format=3 uid="uid://cvyvye0am0p2w"]
 
-[ext_resource type="Material" uid="uid://d200bqk0so1h0" path="res://Materials/OrangeGrid.tres" id="1_6i178"]
+[ext_resource type="Material" uid="uid://dukiehtksqubn" path="res://Materials/RedGrid.tres" id="1_lfkkx"]
+[ext_resource type="Material" uid="uid://j3afs4rqtovq" path="res://Materials/Wood.tres" id="2_hrv2x"]
 
 [node name="CSGCombiner3D" type="CSGCombiner3D"]
 use_collision = true
@@ -10,7 +11,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0406685, 0)
 radius = 50.0
 height = 20.0
 sides = 20
-material = ExtResource("1_6i178")
+material = ExtResource("1_lfkkx")
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCylinder3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 10, -7.5)
@@ -18,7 +19,7 @@ operation = 2
 radius = 50.0
 height = 1.2
 sides = 20
-material = ExtResource("1_6i178")
+material = ExtResource("1_lfkkx")
 
 [node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCylinder3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 9, -15)
@@ -26,7 +27,7 @@ operation = 2
 radius = 50.0
 height = 1.2
 sides = 20
-material = ExtResource("1_6i178")
+material = ExtResource("1_lfkkx")
 
 [node name="CSGCylinder3D4" type="CSGCylinder3D" parent="CSGCylinder3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 8, -22.5)
@@ -34,7 +35,7 @@ operation = 2
 radius = 50.0
 height = 1.2
 sides = 20
-material = ExtResource("1_6i178")
+material = ExtResource("1_lfkkx")
 
 [node name="CSGCylinder3D5" type="CSGCylinder3D" parent="CSGCylinder3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 7, -30)
@@ -42,7 +43,7 @@ operation = 2
 radius = 50.0
 height = 1.2
 sides = 20
-material = ExtResource("1_6i178")
+material = ExtResource("1_lfkkx")
 
 [node name="CSGCylinder3D6" type="CSGCylinder3D" parent="CSGCylinder3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 6, -37.5)
@@ -50,7 +51,7 @@ operation = 2
 radius = 50.0
 height = 1.2
 sides = 20
-material = ExtResource("1_6i178")
+material = ExtResource("1_lfkkx")
 
 [node name="CSGCylinder3D7" type="CSGCylinder3D" parent="CSGCylinder3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 5, -45)
@@ -58,7 +59,7 @@ operation = 2
 radius = 50.0
 height = 1.2
 sides = 20
-material = ExtResource("1_6i178")
+material = ExtResource("1_lfkkx")
 
 [node name="CSGCylinder3D8" type="CSGCylinder3D" parent="CSGCylinder3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 4, -52.5)
@@ -66,7 +67,7 @@ operation = 2
 radius = 50.0
 height = 1.2
 sides = 20
-material = ExtResource("1_6i178")
+material = ExtResource("1_lfkkx")
 
 [node name="CSGCylinder3D9" type="CSGCylinder3D" parent="CSGCylinder3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 3, -60)
@@ -74,11 +75,11 @@ operation = 2
 radius = 50.0
 height = 1.2
 sides = 20
-material = ExtResource("1_6i178")
+material = ExtResource("1_lfkkx")
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -5, -71.362)
 radius = 50.0
 height = 20.0
 sides = 20
-material = ExtResource("1_6i178")
+material = ExtResource("2_hrv2x")

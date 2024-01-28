@@ -1,0 +1,22 @@
+[gd_resource type="StandardMaterial3D" load_steps=7 format=3 uid="uid://j3afs4rqtovq"]
+
+[ext_resource type="Texture2D" uid="uid://dxoh1it5ml5wl" path="res://Materials/WoodenPlanks01_MR_1K/WoodenPlanks01_1K_BaseColor.png" id="1_6ojvr"]
+[ext_resource type="Texture2D" uid="uid://iy7iwqxed43o" path="res://Materials/WoodenPlanks01_MR_1K/WoodenPlanks01_1K_AO.png" id="2_66oen"]
+[ext_resource type="Texture2D" uid="uid://c1q1tpqgw3lcw" path="res://Materials/WoodenPlanks01_MR_1K/WoodenPlanks01_1K_Normal.png" id="3_bp61y"]
+[ext_resource type="Texture2D" uid="uid://btvpsuahhe75a" path="res://Materials/WoodenPlanks01_MR_1K/WoodenPlanks01_1K_Height.png" id="3_kcqrl"]
+[ext_resource type="Material" uid="uid://ct7bbmpviyvne" path="res://Shaders/Cell/CellShade.tres" id="4_87wn5"]
+[ext_resource type="Texture2D" uid="uid://chmxjaoe1i2hl" path="res://Materials/WoodenPlanks01_MR_1K/WoodenPlanks01_1K_Roughness.png" id="4_spo0i"]
+
+[resource]
+next_pass = ExtResource("4_87wn5")
+albedo_texture = ExtResource("1_6ojvr")
+roughness_texture = ExtResource("4_spo0i")
+normal_enabled = true
+normal_texture = ExtResource("3_bp61y")
+ao_enabled = true
+ao_texture = ExtResource("2_66oen")
+heightmap_enabled = true
+heightmap_texture = ExtResource("3_kcqrl")
+uv1_scale = Vector3(0.15, 0.15, 0.15)
+uv1_offset = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
+uv1_triplanar = true
