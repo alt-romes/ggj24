@@ -16,3 +16,4 @@ func _process(delta):
 		rotation.x = curr.x
 		rotation.z = curr.z
 		rotate_y(deg_to_rad(180))
+		

@@ -1,20 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://7125teb0eaaa"]
+[gd_scene load_steps=3 format=3 uid="uid://bocg136tahw2w"]
 
 [ext_resource type="Script" path="res://Scripts/Head.gd" id="1_u6273"]
 [ext_resource type="PackedScene" uid="uid://drgr3t8e43uu5" path="res://Models/Faces/HappyFace.tscn" id="2_he80q"]
+[ext_resource type="Material" uid="uid://ct7bbmpviyvne" path="res://Shaders/Cell/CellShade.tres" id="3_1cghp"]
 
 [node name="Head" type="Node3D"]
 transform = Transform3D(1, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, -3.48787e-16, -3.48787e-16, 3.48787e-16, 1, 0, 0, 0)
 script = ExtResource("1_u6273")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, -1.18846e-17, 9.02727e-17, 9.02727e-17, 0.258819, -0.965926, -1.18846e-17, 0.965926, 0.258819, -0.00346756, 0.00848961, -0.000694752)
-light_color = Color(0.372549, 0.517647, 0.141176, 1)
-light_indirect_energy = 1.22
-light_volumetric_fog_energy = 1.969
+transform = Transform3D(1, 2.4992e-16, 2.44219e-17, -1.65344e-16, 0.728526, -0.685018, -1.88992e-16, 0.685018, 0.728526, -0.00346756, 0.00848961, -0.000694752)
+light_color = Color(0.882353, 0.984314, 0.764706, 1)
 spot_attenuation = 0.812253
 spot_angle = 20.0
 spot_angle_attenuation = 0.435275
 
 [node name="faces_happy" parent="." instance=ExtResource("2_he80q")]
 transform = Transform3D(0.1, 0, -1.5246e-24, -1.5246e-24, -4.37114e-09, -0.1, 0, 0.1, -4.37114e-09, 2.08165e-12, 2.01802, -2.07623)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, -1.21652e-31, 0, -1.21652e-31, 1, 0, 0, 0, 1, 7.6145e-16, 0.82167, -1.36147)
+visible = false
+radius = 0.75
+height = 3.616
+sides = 20
+cone = true
+material = ExtResource("3_1cghp")

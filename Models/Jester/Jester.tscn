@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://b3erebdcn5tnj"]
+[gd_scene load_steps=39 format=3 uid="uid://b3erebdcn5tnj"]
 
 [ext_resource type="Script" path="res://Models/Jester/Jester.gd" id="1_seix5"]
 [ext_resource type="Texture2D" uid="uid://2eaj7o0jrm4d" path="res://Models/Jester/neck_trill_UV.png" id="1_yi51l"]
@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://bucfju27gkenq" path="res://Models/Jester/jester_armL.png" id="4_m4bos"]
 [ext_resource type="Texture2D" uid="uid://blnwes2112h55" path="res://Models/Jester/jester_teeth.png" id="4_o47y4"]
 [ext_resource type="Texture2D" uid="uid://cxyjy8ucmpuy" path="res://Models/Jester/jester_armR_UV.png" id="5_wyfhd"]
+[ext_resource type="AudioStream" uid="uid://b81kpmldno6c2" path="res://Sound/laughs/laugh_1.mp3" id="10_nxlxj"]
+[ext_resource type="AudioStream" uid="uid://cl38l1ium7uul" path="res://Sound/laughs/laugh_2.mp3" id="11_n1kox"]
+[ext_resource type="AudioStream" uid="uid://bsulf88utdl21" path="res://Sound/laughs/laugh_3.mp3" id="12_8xcc3"]
+[ext_resource type="AudioStream" uid="uid://bqk2nwbiqfvgs" path="res://Sound/laughs/laugh_4.mp3" id="13_adwkw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ps0e0"]
 next_pass = ExtResource("2_k6yao")
@@ -317,3 +321,22 @@ transform = Transform3D(0.822268, -0.297374, 0, 0.249592, 0.979681, 0, 0, 0, 0.8
 material_override = SubResource("StandardMaterial3D_cr1ep")
 mesh = SubResource("ArrayMesh_jy7ie")
 skeleton = NodePath("")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="Head"]
+
+[node name="Laughs" type="Node" parent="."]
+
+[node name="laugh_1" type="AudioStreamPlayer3D" parent="Laughs"]
+stream = ExtResource("10_nxlxj")
+
+[node name="laugh_2" type="AudioStreamPlayer3D" parent="Laughs"]
+stream = ExtResource("11_n1kox")
+
+[node name="laugh_3" type="AudioStreamPlayer3D" parent="Laughs"]
+stream = ExtResource("12_8xcc3")
+
+[node name="laugh_4" type="AudioStreamPlayer3D" parent="Laughs"]
+stream = ExtResource("13_adwkw")
+
+[connection signal="screen_entered" from="Head/VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_entered"]
+[connection signal="screen_exited" from="Head/VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

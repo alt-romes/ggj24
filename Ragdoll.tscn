@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dsew42i6hita3"]
+[gd_scene load_steps=8 format=3 uid="uid://dsew42i6hita3"]
 
 [ext_resource type="PackedScene" uid="uid://c41pfexo2afa7" path="res://player.tscn" id="1_ft3r3"]
 [ext_resource type="Texture2D" uid="uid://cnorpy48aqqiv" path="res://Sprite/crosshair.png" id="2_3elqw"]
+[ext_resource type="AudioStream" uid="uid://dk5alsiuebsxo" path="res://Sound/footsteps.mp3" id="2_bu2cy"]
 [ext_resource type="PackedScene" uid="uid://bmcoermmd6lqu" path="res://body.tscn" id="3_xbifw"]
+[ext_resource type="PackedScene" uid="uid://biuitoloh60j3" path="res://Follower.tscn" id="6_skt6f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s5b3c"]
 size = Vector3(31.412, 1, 41.2583)
@@ -12,6 +14,15 @@ size = Vector3(31.412, 1, 41.2583)
 [node name="World" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_ft3r3")]
+
+[node name="RayCast" parent="Player/Camera" index="0"]
+target_position = Vector3(0, -2.98, 0)
+
+[node name="Location" parent="Player/Camera" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.82302)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("2_bu2cy")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 
@@ -36,4 +47,11 @@ texture = ExtResource("2_3elqw")
 stretch_mode = 3
 
 [node name="DeadBody" parent="." instance=ExtResource("3_xbifw")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.68701, -4.78796)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.342694, -0.508608, -2.40361)
+max_contacts_reported = 1
+contact_monitor = true
+
+[node name="Follower" parent="." instance=ExtResource("6_skt6f")]
+transform = Transform3D(0.475, 0, 0, 0, 0.475, 0, 0, 0, 0.475, 0, 0, -17.06)
+
+[editable path="Player"]
