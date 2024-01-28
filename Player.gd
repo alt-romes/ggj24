@@ -17,6 +17,7 @@ var dirVec;
 var speed: float = 0.1
 var wheelDown
 var wheelUp
+var health
 
 #Foot steps variables
 var footSteps;
@@ -32,6 +33,7 @@ func _ready():
 	footSteps = self.get_node("AudioStreamPlayer")
 	wheelDown = false
 	wheelUp = false
+	health = 0
 	
 func _process(delta):
 	input_dir = Input.get_vector("Left", "Right", "Forward", "Backward")
@@ -75,6 +77,11 @@ func _physics_process(delta):
 		deadBody.set_angular_velocity((Vector3($Camera/Location.global_transform.basis.get_euler().x, $Camera/Location.global_transform.basis.get_euler().y, $Camera/Location.global_transform.basis.get_euler().z)-Vector3(deadBody.rotation.x, deadBody.rotation.y, deadBody.rotation.z))*FORCE_OF_GRABING)
 	if wheelUp:
 		deadBody.set_angular_velocity((Vector3($Camera/Location.global_transform.basis.get_euler().x+deg_to_rad(90), $Camera/Location.global_transform.basis.get_euler().y, $Camera/Location.global_transform.basis.get_euler().z)-Vector3(deadBody.rotation.x, deadBody.rotation.y, deadBody.rotation.z))*FORCE_OF_GRABING)
+	var collision = move_and_collide(velocity * delta)
+	#for i in get_slide_collision_count():
+	#	var collision = get_slide_collision(i)
+	#	print("name of col: ", collision.get_collider()
+
 func _input(event):
 	if event is InputEventMouseMotion:
 		# modify accumulated mouse rotation
