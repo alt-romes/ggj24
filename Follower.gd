@@ -4,29 +4,37 @@ const VEL = 1
 const MAX_FIRE = 2
 
 @export var followTarget: Node3D
-var face_happy: Node3D
-var face_normal: Node3D
-var timeToFire: float
-
-var isHappy: bool = false
-var isUnhappy: bool = true
-
-
 @export var projetiles: Array[Node3D]
+
+@onready var face_happy: Node3D = $faces_happy
+@onready var face_normal: Node3D = $faces_normal
+#@onready var face_unhappy: Node3D = $faces_unhappy
+
+@onready var happysound = $HappySound
+@onready var unhappysound = $UnhappySound
+@onready var hurtsound = $HurtSound
+
+# State:
+#	Unhappy: -1
+#	Neutral: 0
+#	Happy: 1
+var state: int = 0
+
 var projetileSpawns: Array[Vector3]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	face_happy = $faces_happy
-	face_normal = $faces_normal
 	
-	var t = randf()
-	if t > 0.5:
-		isHappy = true
-		
 	for i in range(projetiles.size()):
 		projetiles[i].freeze = true
+		projetiles[i].add_to_group("projetile")
 		projetileSpawns.append(projetiles[i].position)
+		
+	var timer := Timer.new()
+	add_child(timer)
+	timer.wait_time = randf_range(1.2, 6.1)
+	timer.start()
+	timer.connect("timeout", _on_timer_timeout)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -38,25 +46,29 @@ func _process(delta):
 		rotation.z = curr.z
 		rotate_y(deg_to_rad(180))
 		
-	if isHappy:
-		face_happy.visible = true
-		face_normal.visible = false
-	else:
-		face_happy.visible = false
-		face_normal.visible = true
-		
-	if randf() > 0.9:
-		isUnhappy = true
-	
-	if isUnhappy:
-		var timer := Timer.new()
-		add_child(timer)
-		timer.wait_time = 2.0
-		timer.start()
-		timer.connect("timeout", _on_timer_timeout)
-		
 		
 func _on_timer_timeout() -> void:
+	# TIMEOUT! Change State.
+	if state == 0:
+		# Make unhappy
+		state = -1
+		setUnhappy()
+		# Throw something!
+		throwSomething()
+		
+	elif state == 1:
+		# Make neutral
+		state = 0
+		setNeutral()
+		# OK
+		
+	elif state == -1:
+		# Make neutral
+		state = 0
+		setNeutral()
+
+
+func throwSomething() -> void:
 	# chosen projetile
 	assert(projetiles.size() > 0)
 	var i = randi() % projetiles.size()
@@ -65,7 +77,22 @@ func _on_timer_timeout() -> void:
 	projetiles[i].rotation = Vector3.ZERO
 	projetiles[i].freeze = false
 	projetiles[i].visible = true
-	projetiles[i].apply_central_impulse(Vector3(0, 15, -20)*VEL)
+	projetiles[i].apply_central_impulse(Vector3(0, 25, -25)*VEL)
 	projetiles[i].angular_velocity = Vector3(3, 0, 0)
 	
-	isUnhappy = false
+func setNeutral() -> void:
+	face_normal.visible = true
+	face_happy.visible = false
+	#face_unhappy.visible = false
+
+func setUnhappy() -> void:
+	face_normal.visible = true # false
+	face_happy.visible = false
+	#face_unhappy.visible = true
+	if(!unhappysound.playing && randf() > 0.9):
+		unhappysound.play()
+
+func setHappy() -> void:
+	face_normal.visible = false
+	face_happy.visible = true
+	#face_unhappy.visible = false

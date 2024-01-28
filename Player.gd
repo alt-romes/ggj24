@@ -11,13 +11,11 @@ var rot_y = 0
 var input_dir
 var direction
 var deadDirection
-var isHeld
-var deadBody;
 var dirVec;
 var speed: float = 0.1
-var wheelDown
-var wheelUp
-var health
+#var wheelDown = false
+#var wheelUp = false
+var injured = false
 
 #Foot steps variables
 var footSteps;
@@ -26,14 +24,12 @@ var currFootStepsPos = 0;
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+# Holding holding
+var thingHeld: Node3D = null
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
-	isHeld = false
-	deadBody = get_tree().get_root().get_node("World/DeadBody")
 	footSteps = self.get_node("AudioStreamPlayer")
-	wheelDown = false
-	wheelUp = false
-	health = 0
 	
 func _process(delta):
 	input_dir = Input.get_vector("Left", "Right", "Forward", "Backward")
@@ -71,16 +67,17 @@ func _physics_process(delta):
 			footSteps.stop()
 
 	move_and_slide()
-	if isHeld:
-		deadBody.set_linear_velocity(($Camera/Location.global_transform.origin - deadBody.global_transform.origin)*FORCE_OF_GRABING)
-	if wheelDown:
-		deadBody.set_angular_velocity((Vector3($Camera/Location.global_transform.basis.get_euler().x, $Camera/Location.global_transform.basis.get_euler().y, $Camera/Location.global_transform.basis.get_euler().z)-Vector3(deadBody.rotation.x, deadBody.rotation.y, deadBody.rotation.z))*FORCE_OF_GRABING)
-	if wheelUp:
-		deadBody.set_angular_velocity((Vector3($Camera/Location.global_transform.basis.get_euler().x+deg_to_rad(90), $Camera/Location.global_transform.basis.get_euler().y, $Camera/Location.global_transform.basis.get_euler().z)-Vector3(deadBody.rotation.x, deadBody.rotation.y, deadBody.rotation.z))*FORCE_OF_GRABING)
+	if thingHeld != null:
+		thingHeld.set_linear_velocity(($Camera/Location.global_transform.origin - thingHeld.global_transform.origin)*FORCE_OF_GRABING)
+	#if wheelDown:
+		#deadBody.set_angular_velocity((Vector3($Camera/Location.global_transform.basis.get_euler().x, $Camera/Location.global_transform.basis.get_euler().y, $Camera/Location.global_transform.basis.get_euler().z)-Vector3(deadBody.rotation.x, deadBody.rotation.y, deadBody.rotation.z))*FORCE_OF_GRABING)
+	#if wheelUp:
+		#deadBody.set_angular_velocity((Vector3($Camera/Location.global_transform.basis.get_euler().x+deg_to_rad(90), $Camera/Location.global_transform.basis.get_euler().y, $Camera/Location.global_transform.basis.get_euler().z)-Vector3(deadBody.rotation.x, deadBody.rotation.y, deadBody.rotation.z))*FORCE_OF_GRABING)
 	var collision = move_and_collide(velocity * delta)
-	#for i in get_slide_collision_count():
-	#	var collision = get_slide_collision(i)
-	#	print("name of col: ", collision.get_collider()
+	for i in get_slide_collision_count():
+		collision = get_slide_collision(i)
+		if collision.get_collider().is_in_group("projectile"):
+			injured = true
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -91,31 +88,33 @@ func _input(event):
 		rotate_object_local(Vector3(0, 1, 0), rot_x) # first rotate in Y
 		rotate_object_local(Vector3(1, 0, 0), rot_y) # then rotate in X
 	elif event is InputEventMouseButton:
-		if !isHeld and $Camera/RayCast.is_colliding() and $Camera/RayCast.get_collider() == deadBody and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-			print("IS held");
-			isHeld = true
-			deadBody.axis_lock_angular_x = true
-			deadBody.axis_lock_angular_y = true
-			deadBody.axis_lock_angular_z = true
-		if isHeld and Input.is_mouse_button_pressed(MOUSE_BUTTON_WHEEL_DOWN):
-			print("WHEEEL DOWWWWN");
-			deadBody.axis_lock_angular_x = false
-			deadBody.axis_lock_angular_y = false
-			deadBody.axis_lock_angular_z = false
-			wheelDown = true
-			wheelUp = false
-		if isHeld and Input.is_mouse_button_pressed(MOUSE_BUTTON_WHEEL_UP):
-			print("WHEEEL UPPPPP");
-			deadBody.axis_lock_angular_x = false
-			deadBody.axis_lock_angular_y = false
-			deadBody.axis_lock_angular_z = false
-			wheelUp = true
-			wheelDown = false
+		if thingHeld == null and $Camera/RayCast.is_colliding() and $Camera/RayCast.get_collider().is_in_group("prop") and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+			thingHeld = $Camera/RayCast.get_collider()
+			thingHeld.axis_lock_angular_x = true
+			thingHeld.axis_lock_angular_y = true
+			thingHeld.axis_lock_angular_z = true
+		#if isHeld and Input.is_mouse_button_pressed(MOUSE_BUTTON_WHEEL_DOWN):
+			#print("WHEEEL DOWWWWN");
+			#thingHeld.axis_lock_angular_x = false
+			#thingHeld.axis_lock_angular_y = false
+			#thingHeld.axis_lock_angular_z = false
+			#wheelDown = true
+			#wheelUp = false
+		#if isHeld and Input.is_mouse_button_pressed(MOUSE_BUTTON_WHEEL_UP):
+			#print("WHEEEL UPPPPP");
+			#deadBody.axis_lock_angular_x = false
+			#deadBody.axis_lock_angular_y = false
+			#deadBody.axis_lock_angular_z = false
+			#wheelUp = true
+			#wheelDown = false
 		if Input.is_action_just_released("mouse0", false):
-			print("I released it");
-			isHeld = false
-			wheelDown = false
-			wheelUp = false
-			deadBody.axis_lock_angular_x = false
-			deadBody.axis_lock_angular_y = false
-			deadBody.axis_lock_angular_z = false
+			mayReleaseThing()
+
+func mayReleaseThing() -> void:
+	if thingHeld != null:
+		thingHeld.axis_lock_angular_x = false
+		thingHeld.axis_lock_angular_y = false
+		thingHeld.axis_lock_angular_z = false
+		thingHeld = null
+		#wheelDown = false
+		#wheelUp = false

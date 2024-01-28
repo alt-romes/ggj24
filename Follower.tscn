@@ -1,11 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://biuitoloh60j3"]
+[gd_scene load_steps=10 format=3 uid="uid://biuitoloh60j3"]
 
-[ext_resource type="PackedScene" path="res://Models/Faces/NormalFace.tscn" id="1_bl85q"]
+[ext_resource type="PackedScene" uid="uid://dei23eqbh0ak5" path="res://Models/Faces/NormalFace.tscn" id="1_bl85q"]
 [ext_resource type="Script" path="res://Follower.gd" id="1_x1sqy"]
 [ext_resource type="PackedScene" uid="uid://drgr3t8e43uu5" path="res://Models/Faces/HappyFace.tscn" id="2_vnyit"]
 [ext_resource type="PackedScene" uid="uid://cy0qyxjwnm2k7" path="res://projectile.tscn" id="4_scfan"]
 [ext_resource type="PackedScene" uid="uid://bqy2xgllbyd7m" path="res://bottle.tscn" id="5_4llmu"]
 [ext_resource type="PackedScene" uid="uid://in5y6oatvaoo" path="res://brick.tscn" id="6_u7pmm"]
+[ext_resource type="AudioStream" uid="uid://cdqx5w0w3ea07" path="res://Sound/FX/DorNoOutroLaugh.mp3" id="7_lms2d"]
+[ext_resource type="AudioStream" uid="uid://d1grsyxsxbr7v" path="res://Sound/FX/Decapitado2.mp3" id="8_73kkm"]
+[ext_resource type="AudioStream" uid="uid://cgld8uon48ubx" path="res://Sound/FX/DorEmMim.mp3" id="8_d2hje"]
 
 [node name="Follower" type="Node3D" node_paths=PackedStringArray("projetiles")]
 script = ExtResource("1_x1sqy")
@@ -16,6 +19,7 @@ transform = Transform3D(1, 0, -1.5246e-23, -1.5246e-23, -4.37114e-08, -1, 0, 1, 
 
 [node name="faces_happy" parent="." instance=ExtResource("2_vnyit")]
 transform = Transform3D(1, 0, -1.5246e-23, -1.5246e-23, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.08165e-12, 10, -5.654)
+visible = false
 
 [node name="Light" type="SpotLight3D" parent="."]
 transform = Transform3D(1, -4.76458e-17, 1.75973e-16, 1.75973e-16, 0.504528, -0.863396, -4.76458e-17, 0.863396, 0.504528, 2.08165e-12, -3.04476, 12.286)
@@ -40,5 +44,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.73942, 14.6481)
 [node name="brick" parent="." instance=ExtResource("6_u7pmm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.62258, 15.165)
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+[node name="HappySound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_lms2d")
+volume_db = -10.0
+
+[node name="UnhappySound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_73kkm")
+attenuation_model = 1
+volume_db = -5.0
+attenuation_filter_cutoff_hz = 4000.0
+
+[node name="HurtSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_d2hje")
+volume_db = -10.0

@@ -1,13 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cy0qyxjwnm2k7"]
-
-[ext_resource type="Material" uid="uid://ct7bbmpviyvne" path="res://Shaders/Cell/CellShade.tres" id="1_1cbrd"]
+[gd_scene load_steps=8 format=3 uid="uid://cy0qyxjwnm2k7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d6cmk"]
-size = Vector3(0.315636, 0.88619, 0.275452)
+size = Vector3(0.762299, 1.79476, 0.275452)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tnanr"]
 resource_name = "Material.002"
-next_pass = ExtResource("1_1cbrd")
 cull_mode = 2
 albedo_color = Color(0, 0, 0, 1)
 roughness = 0.5
@@ -84,14 +81,14 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_c7gmf")
 
-[node name="projectile" type="RigidBody3D"]
+[node name="projectile" type="RigidBody3D" groups=["projectile", "prop"]]
 
 [node name="Collision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.111576, 0.261241, 0.016449)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.179428, 0.54125, 0.016449)
 shape = SubResource("BoxShape3D_d6cmk")
 
 [node name="Faca" type="Node3D" parent="."]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="Cube" type="MeshInstance3D" parent="Faca"]
 transform = Transform3D(0.203357, 0, 0, 0, 0.707196, 0, 0, 0, 0.203357, 0, 0, 0)
