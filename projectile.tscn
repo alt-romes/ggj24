@@ -1,4 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://cy0qyxjwnm2k7"]
+[gd_scene load_steps=9 format=3 uid="uid://cy0qyxjwnm2k7"]
+
+[ext_resource type="Script" path="res://Throwable.gd" id="1_r2uyd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d6cmk"]
 size = Vector3(0.762299, 1.79476, 0.275452)
@@ -82,6 +84,9 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_c7gmf")
 
 [node name="projectile" type="RigidBody3D" groups=["projectile", "prop"]]
+max_contacts_reported = 5
+contact_monitor = true
+script = ExtResource("1_r2uyd")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.179428, 0.54125, 0.016449)

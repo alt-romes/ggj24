@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqy2xgllbyd7m"]
+[gd_scene load_steps=6 format=3 uid="uid://bqy2xgllbyd7m"]
+
+[ext_resource type="Script" path="res://Throwable.gd" id="1_qr8uv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_skjp7"]
 resource_name = "Material.001"
@@ -44,6 +46,9 @@ shadow_mesh = SubResource("ArrayMesh_x8hmn")
 height = 2.75
 
 [node name="Bottle" type="RigidBody3D" groups=["projectile", "prop"]]
+max_contacts_reported = 5
+contact_monitor = true
+script = ExtResource("1_qr8uv")
 
 [node name="Cylinder" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)

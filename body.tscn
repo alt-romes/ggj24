@@ -1,5 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://bmcoermmd6lqu"]
+[gd_scene load_steps=20 format=3 uid="uid://bmcoermmd6lqu"]
 
+[ext_resource type="Script" path="res://Throwable.gd" id="1_40orb"]
 [ext_resource type="Texture2D" uid="uid://behvs80ux5htn" path="res://Textures/jesus.png" id="1_t3cfs"]
 [ext_resource type="Texture2D" uid="uid://bvhc6d1xgxg61" path="res://Textures/ropes.png" id="2_ob0cf"]
 [ext_resource type="Material" uid="uid://ct7bbmpviyvne" path="res://Shaders/Cell/CellShade.tres" id="2_yn173"]
@@ -129,6 +130,9 @@ shadow_mesh = SubResource("ArrayMesh_hqgmi")
 size = Vector3(2.09717, 4.38183, 1.3916)
 
 [node name="body" type="RigidBody3D" groups=["prop"]]
+max_contacts_reported = 5
+contact_monitor = true
+script = ExtResource("1_40orb")
 
 [node name="jesus" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.175, 0, 0, 0, 0.173746, -0.0209125, 0, 0.0209125, 0.173746, 0.0545713, 2.41209, -0.135752)

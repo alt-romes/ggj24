@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://in5y6oatvaoo"]
+[gd_scene load_steps=6 format=3 uid="uid://in5y6oatvaoo"]
+
+[ext_resource type="Script" path="res://Throwable.gd" id="1_shrv0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ak5p"]
 resource_name = "Material.001"
@@ -42,6 +44,9 @@ shadow_mesh = SubResource("ArrayMesh_0e2hk")
 size = Vector3(1.408, 0.99, 3.5)
 
 [node name="brick" type="RigidBody3D" groups=["projectile", "prop"]]
+max_contacts_reported = 5
+contact_monitor = true
+script = ExtResource("1_shrv0")
 
 [node name="Cube" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.7, 0, 0, 0, 0.48, 0, 0, 0, 1.649, 0, 0, 0)

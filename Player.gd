@@ -83,7 +83,7 @@ func _physics_process(delta):
 	var collision = move_and_collide(velocity * delta)
 	for i in get_slide_collision_count():
 		collision = get_slide_collision(i)
-		if collision.get_collider().is_in_group("projectile") && collision.get_collider().linear_velocity.length() > 0.0001:
+		if collision.get_collider().is_in_group("projectile") and collision.get_collider().linear_velocity.length() > 1:
 			becomeInjured()
 
 func _input(event):
