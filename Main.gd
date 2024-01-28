@@ -25,6 +25,6 @@ func _process(delta):
 		if f.state == 1:
 			totalHappy += 1
 			
-	if totalHappy > 0.5*31:
+	if totalHappy > 0.9*31:
 		winscreen.visible = true
 		
