@@ -9,7 +9,7 @@ var projetiles: Array[String]
 
 @onready var face_happy: Node3D = $Head/faces_happy
 @onready var face_normal: Node3D = $Head/faces_normal
-#@onready var face_unhappy: Node3D = $faces_unhappy
+@onready var face_unhappy: Node3D = $Head/faces_unhappy
 @onready var face_light: Node3D = $Light
 
 @onready var happysound = $HappySound
@@ -27,13 +27,14 @@ var state: int = 0
 var projetileSpawns: Array[Vector3]
 #signal was_touched
 
+@onready var timer := Timer.new()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	projetiles.append("res://bottle.tscn")
 	projetiles.append("res://brick.tscn")
 	projetiles.append("res://projectile.tscn")
-		
-	var timer := Timer.new()
+	
 	add_child(timer)
 	timer.wait_time = randf_range(3.2, 14.1)
 	timer.start()
@@ -89,12 +90,12 @@ func setNeutral() -> void:
 	face_normal.visible = true
 	face_happy.visible = false
 	face_light.light_color = Color("ffffc1")
-	#face_unhappy.visible = false
+	face_unhappy.visible = false
 
 func setUnhappy() -> void:
-	face_normal.visible = true # false
+	face_normal.visible = false
 	face_happy.visible = false
-	#face_unhappy.visible = true
+	face_unhappy.visible = true
 	face_light.light_color = Color("ff0017")
 	if(!unhappysound.playing && randf() > 0.9):
 		unhappysound.play()
@@ -102,9 +103,11 @@ func setUnhappy() -> void:
 func setHappy() -> void:
 	face_normal.visible = false
 	face_happy.visible = true
-	#face_unhappy.visible = false
+	face_unhappy.visible = false
 	face_light.light_color = Color("00ffc1")
+	
 	happysound.play()
+	timer.start()
 	
 
 func _on_was_touched() -> void:
@@ -112,3 +115,4 @@ func _on_was_touched() -> void:
 		if n != null:
 			n.setHappy()
 	setUnhappy()
+	timer.start()
