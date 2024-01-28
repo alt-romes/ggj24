@@ -1,22 +1,30 @@
 extends Node3D
 
-#@onreadu 
+@onready var timer := Timer.new()
+@export var screen: TextureRect
+@export var winscreen: Control
+
+@export var followers: Array[Follower]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
-	#total = $FirstRow.get_child_count()
-	#total += $FirstRow2.get_child_count()
-	#total += $FirstRow3.get_child_count()
-	#total += $FirstRow4.get_child_count()
-	#total += $FirstRow5.get_child_count()
-	#total += $FirstRow6.get_child_count()
-	#total += $FirstRow7.get_child_count()
+	timer.one_shot = true
+	timer.wait_time = 5.0
+	add_child(timer)
+	timer.connect("timeout", _end_title_screen.bind(timer))
+	timer.start()
 
-
+func _end_title_screen(timer):
+	screen.visible = false
+	timer.queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
-	#for i in total:
-		#if get_node("FirstRow"+str(i)).state == :
+	var totalHappy = 0
+	for f in followers:
+		if f.state == 1:
+			totalHappy += 1
+			
+	if totalHappy > 0.5*31:
+		winscreen.visible = true
+		

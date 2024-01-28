@@ -35,10 +35,12 @@ func _ready():
 	projetiles.append("res://brick.tscn")
 	projetiles.append("res://projectile.tscn")
 	
+	await get_tree().create_timer(5.0).timeout
+	
 	add_child(timer)
 	timer.wait_time = randf_range(3.2, 14.1)
-	timer.start()
 	timer.connect("timeout", _on_timer_timeout)
+	timer.start()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -73,17 +75,17 @@ func _on_timer_timeout() -> void:
 
 
 func throwSomething() -> void:
-	if randf() > 0.65:
+	if randf() > 0.5:
 		# chosen projetile
 		assert(projetiles.size() > 0)
 		var i = randi() % projetiles.size()
 		var proj = load(projetiles[i]).instantiate()
 		get_tree().get_root().get_node("Root").add_child(proj)
-		proj.position = Vector3(0, 5, 12)
+		proj.position = global_position
 		proj.rotation = Vector3.ZERO
 		proj.freeze = false
 		proj.visible = true
-		proj.apply_central_impulse(Vector3(0, 25, -25)*VEL)
+		proj.apply_central_impulse(Vector3(0, 15, -15)*VEL)
 		proj.angular_velocity = Vector3(3, 0, 0)
 	
 func setNeutral() -> void:
@@ -101,6 +103,7 @@ func setUnhappy() -> void:
 		unhappysound.play()
 
 func setHappy() -> void:
+	state = 1
 	face_normal.visible = false
 	face_happy.visible = true
 	face_unhappy.visible = false
