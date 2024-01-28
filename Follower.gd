@@ -48,7 +48,7 @@ func _process(delta):
 			$Projectil.rotation = Vector3.ZERO
 			$Projectil.freeze = false
 			$Projectil.visible = true
-			$Projectil.apply_central_impulse(Vector3(0, 10, 10)*VEL)
+			$Projectil.apply_central_impulse(Vector3(0, 10, -10)*VEL)
 			$Projectil.angular_velocity = Vector3(3, 0, 0)
 	else:
 		timeToFire += delta

@@ -1,12 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c46wf5dm8c2px"]
+[gd_scene load_steps=9 format=3 uid="uid://3gcpdbgne8tk"]
 
 [ext_resource type="PackedScene" uid="uid://c41pfexo2afa7" path="res://player.tscn" id="1_eoeiw"]
 [ext_resource type="PackedScene" uid="uid://cvyvye0am0p2w" path="res://Stage.tscn" id="2_ljblw"]
 [ext_resource type="PackedScene" uid="uid://b3erebdcn5tnj" path="res://Models/Jester/Jester.tscn" id="3_e2ysg"]
 [ext_resource type="Material" uid="uid://dukiehtksqubn" path="res://Materials/RedGrid.tres" id="3_q3ctx"]
-[ext_resource type="Material" uid="uid://j3afs4rqtovq" path="res://Materials/Wood.tres" id="4_apn72"]
-[ext_resource type="Material" uid="uid://sdmrf2rdwfcp" path="res://Materials/GrayGrid.tres" id="4_xevje"]
-[ext_resource type="PackedScene" uid="uid://6gn87rfsn0eq" path="res://Follower.tscn" id="6_5pvjy"]
+[ext_resource type="PackedScene" uid="uid://biuitoloh60j3" path="res://Follower.tscn" id="6_5pvjy"]
 [ext_resource type="Shader" path="res://Shaders/Vignet.gdshader" id="8_i6xw8"]
 
 [sub_resource type="Environment" id="Environment_dy2mx"]
@@ -96,9 +94,9 @@ material = ExtResource("3_q3ctx")
 
 [node name="Floor" type="CSGBox3D" parent="Arena"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
-material_override = ExtResource("4_apn72")
+material_override = ExtResource("3_q3ctx")
 size = Vector3(100, 0.5, 100)
-material = ExtResource("4_xevje")
+material = ExtResource("3_q3ctx")
 
 [node name="Lights" type="Node3D" parent="."]
 
