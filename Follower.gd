@@ -75,19 +75,23 @@ func _on_timer_timeout() -> void:
 
 
 func throwSomething() -> void:
-	if randf() > 0.5:
+	if randf() > 0.2:
 		# chosen projetile
 		assert(projetiles.size() > 0)
 		var i = randi() % projetiles.size()
 		var proj = load(projetiles[i]).instantiate()
 		get_tree().get_root().get_node("Root").add_child(proj)
-		proj.position = Vector3(0, 5, 12)
+		proj.position = global_position + Vector3(0, 4, 0)
 		proj.rotation = Vector3.ZERO
 		proj.freeze = false
 		proj.visible = true
-		proj.apply_central_impulse(Vector3(0, 10, -15)*VEL)
+		proj.apply_central_impulse(Vector3(0, 5, -15)*VEL)
 		print("throwing")
 		proj.angular_velocity = Vector3(3, 0, 0)
+		
+		proj.visible = false
+		await get_tree().create_timer(0.5).timeout
+		proj.visible = true
 	
 func setNeutral() -> void:
 	face_normal.visible = true
