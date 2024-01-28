@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://3gcpdbgne8tk"]
+[gd_scene load_steps=11 format=3 uid="uid://3gcpdbgne8tk"]
 
+[ext_resource type="Script" path="res://Main.gd" id="1_c3bhf"]
 [ext_resource type="PackedScene" uid="uid://c41pfexo2afa7" path="res://player.tscn" id="1_eoeiw"]
 [ext_resource type="PackedScene" uid="uid://bmcoermmd6lqu" path="res://body.tscn" id="1_i0wa7"]
 [ext_resource type="PackedScene" uid="uid://cvyvye0am0p2w" path="res://Stage.tscn" id="2_ljblw"]
 [ext_resource type="PackedScene" uid="uid://b3erebdcn5tnj" path="res://Models/Jester/Jester.tscn" id="3_e2ysg"]
-[ext_resource type="Material" path="res://Materials/RedGrid.tres" id="3_q3ctx"]
+[ext_resource type="Material" uid="uid://dukiehtksqubn" path="res://Materials/RedGrid.tres" id="3_q3ctx"]
 [ext_resource type="Script" path="res://Lights.gd" id="4_jjjm5"]
 [ext_resource type="PackedScene" uid="uid://biuitoloh60j3" path="res://Follower.tscn" id="6_5pvjy"]
 [ext_resource type="Material" uid="uid://7oixg0qc72w6" path="res://Shaders/VignetMat.tres" id="7_f8osw"]
@@ -31,6 +32,7 @@ volumetric_fog_detail_spread = 6.0
 adjustment_enabled = true
 
 [node name="Root" type="Node3D"]
+script = ExtResource("1_c3bhf")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_dy2mx")
