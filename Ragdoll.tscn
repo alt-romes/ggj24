@@ -47,7 +47,7 @@ texture = ExtResource("2_3elqw")
 stretch_mode = 3
 
 [node name="DeadBody" parent="." instance=ExtResource("3_xbifw")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.342694, -0.508608, -2.40361)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.342694, 2.24719, -2.40361)
 max_contacts_reported = 1
 contact_monitor = true
 

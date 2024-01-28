@@ -1,7 +1,7 @@
 extends Node3D
 
 const VEL = 1
-const MAX_FIRE = 1
+const MAX_FIRE = 2
 
 @export var followTarget: Node3D
 var face_happy: Node3D
@@ -43,18 +43,12 @@ func _process(delta):
 		timeToFire = 0.0;
 		var rand = randf()
 		print("random var: ", rand)
-		$Projectil.freeze = false
-		$Projectil.visible = true
-		$Projectil.apply_central_impulse(Vector3(0, 10, 10)*VEL)
-		$Projectil.angular_velocity = Vector3(3, 0, 0)
+		if rand <= 0.333:
+			$Projectil.position = spawnPoint
+			$Projectil.rotation = Vector3.ZERO
+			$Projectil.freeze = false
+			$Projectil.visible = true
+			$Projectil.apply_central_impulse(Vector3(0, 10, 10)*VEL)
+			$Projectil.angular_velocity = Vector3(3, 0, 0)
 	else:
 		timeToFire += delta
-
-
-func _on_projectil_body_entered(body):
-	print("body: ", body)
-	if(body == get_tree().get_root().get_node("World/Ground")):
-		print("I attacked")
-		$Projectil.linear_velocity = Vector3.ZERO
-		$Projectil.position = spawnPoint
-		#$Projectil.visible = false
