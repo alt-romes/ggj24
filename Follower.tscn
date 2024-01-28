@@ -10,6 +10,9 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hctyg"]
 size = Vector3(10, 14.9443, 10)
+[node name="faces_unhappy" parent="." instance=ExtResource("10_q2dvn")]
+transform = Transform3D(1, -6.66424e-31, 2.91303e-38, 0, -4.37114e-08, -1, 6.66424e-31, 1, -4.37114e-08, 2.08165e-12, 10, -5.654)
+visible = false
 
 [node name="Follower" type="Node3D" groups=["face", "prop"]]
 script = ExtResource("1_x1sqy")
