@@ -5,7 +5,7 @@ const VEL = 1
 const MAX_FIRE = 2
 
 @export var followTarget: Node3D
-@onready var projetiles: Array[Node3D] = [$Projetil, $Bottle, $brick]
+var projetiles: Array[String]
 
 @onready var face_happy: Node3D = $Head/faces_happy
 @onready var face_normal: Node3D = $Head/faces_normal
@@ -29,11 +29,9 @@ var projetileSpawns: Array[Vector3]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
-	for i in range(projetiles.size()):
-		projetiles[i].freeze = true
-		projetiles[i].add_to_group("projetile")
-		projetileSpawns.append(projetiles[i].position)
+	projetiles.append("res://bottle.tscn")
+	projetiles.append("res://brick.tscn")
+	projetiles.append("res://projectile.tscn")
 		
 	var timer := Timer.new()
 	add_child(timer)
@@ -78,13 +76,14 @@ func throwSomething() -> void:
 		# chosen projetile
 		assert(projetiles.size() > 0)
 		var i = randi() % projetiles.size()
-		
-		projetiles[i].position = projetileSpawns[i]
-		projetiles[i].rotation = Vector3.ZERO
-		projetiles[i].freeze = false
-		projetiles[i].visible = true
-		projetiles[i].apply_central_impulse(Vector3(0, 25, -25)*VEL)
-		projetiles[i].angular_velocity = Vector3(3, 0, 0)
+		var proj = load(projetiles[i]).instantiate()
+		get_tree().get_root().get_node("Root").add_child(proj)
+		proj.position = Vector3(0, 5, 12)
+		proj.rotation = Vector3.ZERO
+		proj.freeze = false
+		proj.visible = true
+		proj.apply_central_impulse(Vector3(0, 25, -25)*VEL)
+		proj.angular_velocity = Vector3(3, 0, 0)
 	
 func setNeutral() -> void:
 	face_normal.visible = true
