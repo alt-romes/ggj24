@@ -9,6 +9,7 @@ const MAX_FIRE = 2
 @onready var face_happy: Node3D = $faces_happy
 @onready var face_normal: Node3D = $faces_normal
 #@onready var face_unhappy: Node3D = $faces_unhappy
+@onready var face_light: Node3D = $Light
 
 @onready var happysound = $HappySound
 @onready var unhappysound = $UnhappySound
@@ -84,12 +85,14 @@ func throwSomething() -> void:
 func setNeutral() -> void:
 	face_normal.visible = true
 	face_happy.visible = false
+	face_light.light_color = Color("ffffc1")
 	#face_unhappy.visible = false
 
 func setUnhappy() -> void:
 	face_normal.visible = true # false
 	face_happy.visible = false
 	#face_unhappy.visible = true
+	face_light.light_color = Color("ff0017")
 	if(!unhappysound.playing && randf() > 0.9):
 		unhappysound.play()
 
@@ -97,3 +100,4 @@ func setHappy() -> void:
 	face_normal.visible = false
 	face_happy.visible = true
 	#face_unhappy.visible = false
+	face_light.light_color = Color(0, 200, 0)
