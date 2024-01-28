@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://cy0qyxjwnm2k7"]
+[gd_scene load_steps=9 format=3 uid="uid://cy0qyxjwnm2k7"]
+
+[ext_resource type="Material" uid="uid://ct7bbmpviyvne" path="res://Shaders/Cell/CellShade.tres" id="1_1cbrd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d6cmk"]
 size = Vector3(0.315636, 0.88619, 0.275452)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tnanr"]
 resource_name = "Material.002"
+next_pass = ExtResource("1_1cbrd")
 cull_mode = 2
 albedo_color = Color(0, 0, 0, 1)
 roughness = 0.5

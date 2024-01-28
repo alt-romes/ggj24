@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://in5y6oatvaoo"]
+[gd_scene load_steps=6 format=3 uid="uid://in5y6oatvaoo"]
+
+[ext_resource type="Material" uid="uid://ct7bbmpviyvne" path="res://Shaders/Cell/CellShade.tres" id="1_ea122"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ak5p"]
 resource_name = "Material.001"
+next_pass = ExtResource("1_ea122")
 cull_mode = 2
 albedo_color = Color(0.733326, 0.303859, 0.0451274, 1)
 roughness = 0.5
