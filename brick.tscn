@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bykcns1nej3gi"]
+[gd_scene load_steps=5 format=3 uid="uid://in5y6oatvaoo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ak5p"]
 resource_name = "Material.001"
@@ -39,12 +39,12 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_0e2hk")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wvjqu"]
-size = Vector3(2.0116, 1.4137, 5)
+size = Vector3(1.408, 0.99, 3.5)
 
 [node name="brick" type="RigidBody3D"]
 
 [node name="Cube" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.685793, 0, 0, 0, 2.35617, 0, 0, 0)
+transform = Transform3D(0.7, 0, 0, 0, 0.48, 0, 0, 0, 1.649, 0, 0, 0)
 mesh = SubResource("ArrayMesh_mi73f")
 skeleton = NodePath("")
 

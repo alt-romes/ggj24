@@ -7,21 +7,25 @@ const MAX_FIRE = 2
 var face_happy: Node3D
 var face_normal: Node3D
 var timeToFire: float
-var spawnPoint
 
 @export var isHappy: bool = false
+
+
+@export var projetiles: Array[Node3D]
+var projetileSpawns: Array[Vector3]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	face_happy = $faces_happy
 	face_normal = $faces_normal
-	$Projectil.freeze = true
+	
 	var t = randf()
 	if t > 0.5:
 		isHappy = true
-	spawnPoint = $Projectil.position
-	
-	
+		
+	for i in range(projetiles.size()):
+		projetiles[i].freeze = true
+		projetileSpawns.append(projetiles[i].position)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -41,14 +45,17 @@ func _process(delta):
 	
 	if timeToFire >= MAX_FIRE:
 		timeToFire = 0.0;
-		var rand = randf()
-		print("random var: ", rand)
+		
+		# chosen projetile
+		assert(projetiles.size() > 0)
+		var i = randi() % projetiles.size()
+		
 		#if rand <= 0.333:
-		$Projectil.position = spawnPoint
-		$Projectil.rotation = Vector3.ZERO
-		$Projectil.freeze = false
-		$Projectil.visible = true
-		$Projectil.apply_central_impulse(Vector3(0, 15, -20)*VEL)
-		$Projectil.angular_velocity = Vector3(3, 0, 0)
+		projetiles[i].position = projetileSpawns[i]
+		projetiles[i].rotation = Vector3.ZERO
+		projetiles[i].freeze = false
+		projetiles[i].visible = true
+		projetiles[i].apply_central_impulse(Vector3(0, 15, -20)*VEL)
+		projetiles[i].angular_velocity = Vector3(3, 0, 0)
 	else:
 		timeToFire += delta

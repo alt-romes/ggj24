@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddjrnr7rkaxlf"]
+[gd_scene load_steps=5 format=3 uid="uid://bqy2xgllbyd7m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_skjp7"]
 resource_name = "Material.001"
@@ -41,12 +41,12 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_x8hmn")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_2ea1f"]
-height = 5.43624
-radius = 1.03639
+height = 2.75
 
 [node name="Bottle" type="RigidBody3D"]
 
 [node name="Cylinder" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("ArrayMesh_ab0qm")
 skeleton = NodePath("")
 
