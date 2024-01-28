@@ -10,7 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://d1grsyxsxbr7v" path="res://Sound/FX/Decapitado2.mp3" id="8_73kkm"]
 [ext_resource type="AudioStream" uid="uid://cgld8uon48ubx" path="res://Sound/FX/DorEmMim.mp3" id="8_d2hje"]
 
-[node name="Follower" type="Node3D" node_paths=PackedStringArray("projetiles")]
+[node name="Follower" type="Node3D" node_paths=PackedStringArray("projetiles") groups=["face", "prop"]]
 script = ExtResource("1_x1sqy")
 projetiles = [NodePath("Projetil"), NodePath("Bottle"), NodePath("brick")]
 

@@ -1,10 +1,12 @@
 extends CharacterBody3D
 
+@export var vignetmat: ShaderMaterial
 
-const SPEED = 5.0
+var SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const LOOKAROUND_SPEED = 0.002
 const FORCE_OF_GRABING = 3
+const THROW_VEL = 1
 
 var rot_x = 0
 var rot_y = 0
@@ -16,6 +18,8 @@ var speed: float = 0.1
 #var wheelDown = false
 #var wheelUp = false
 var injured = false
+var immune = false # immune after first hit for a few seconds
+var dead = false
 
 #Foot steps variables
 var footSteps;
@@ -36,6 +40,9 @@ func _process(delta):
 	direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
 func _physics_process(delta):
+	if dead:
+		rotation.z = 90
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -76,8 +83,8 @@ func _physics_process(delta):
 	var collision = move_and_collide(velocity * delta)
 	for i in get_slide_collision_count():
 		collision = get_slide_collision(i)
-		if collision.get_collider().is_in_group("projectile"):
-			injured = true
+		if collision.get_collider().is_in_group("projectile") && collision.get_collider().linear_velocity.length() > 0.0001:
+			becomeInjured()
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -115,6 +122,41 @@ func mayReleaseThing() -> void:
 		thingHeld.axis_lock_angular_x = false
 		thingHeld.axis_lock_angular_y = false
 		thingHeld.axis_lock_angular_z = false
+		thingHeld.apply_central_impulse(Vector3(0, 10, 15)*THROW_VEL)
+		thingHeld.angular_velocity = Vector3(3, 0, 0)
 		thingHeld = null
 		#wheelDown = false
 		#wheelUp = false
+
+func becomeInjured():
+	if !injured:
+		injured = true
+		immune = true
+		var regentimer := Timer.new()
+		add_child(regentimer)
+		regentimer.one_shot = true
+		var immunetimer := Timer.new()
+		add_child(immunetimer)
+		immunetimer.one_shot = true
+		regentimer.wait_time = 3.0
+		immunetimer.wait_time = 0.5
+		regentimer.start()
+		immunetimer.start()
+		regentimer.connect("timeout", _on_timer_regenplayer.bind(regentimer))
+		immunetimer.connect("timeout", _on_timer_noimmune.bind(immunetimer))
+		vignetmat.set_shader_parameter("vignette_rgb", Color(255,0,0))
+	elif injured && !immune:
+		vignetmat.set_shader_parameter("vignette_intensity", 7.5)
+		dead = true
+		SPEED = 0
+
+func _on_timer_noimmune(timer) -> void:
+	immune = false
+	timer.queue_free()
+
+	
+func _on_timer_regenplayer(timer) -> void:
+	if !dead:
+		injured = false
+		vignetmat.set_shader_parameter("vignette_rgb", Color(0,0,0))
+		timer.queue_free()

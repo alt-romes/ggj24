@@ -32,7 +32,7 @@ func _ready():
 		
 	var timer := Timer.new()
 	add_child(timer)
-	timer.wait_time = randf_range(1.2, 6.1)
+	timer.wait_time = randf_range(3.2, 14.1)
 	timer.start()
 	timer.connect("timeout", _on_timer_timeout)
 
@@ -69,16 +69,17 @@ func _on_timer_timeout() -> void:
 
 
 func throwSomething() -> void:
-	# chosen projetile
-	assert(projetiles.size() > 0)
-	var i = randi() % projetiles.size()
-	
-	projetiles[i].position = projetileSpawns[i]
-	projetiles[i].rotation = Vector3.ZERO
-	projetiles[i].freeze = false
-	projetiles[i].visible = true
-	projetiles[i].apply_central_impulse(Vector3(0, 25, -25)*VEL)
-	projetiles[i].angular_velocity = Vector3(3, 0, 0)
+	if randf() > 0.65:
+		# chosen projetile
+		assert(projetiles.size() > 0)
+		var i = randi() % projetiles.size()
+		
+		projetiles[i].position = projetileSpawns[i]
+		projetiles[i].rotation = Vector3.ZERO
+		projetiles[i].freeze = false
+		projetiles[i].visible = true
+		projetiles[i].apply_central_impulse(Vector3(0, 25, -25)*VEL)
+		projetiles[i].angular_velocity = Vector3(3, 0, 0)
 	
 func setNeutral() -> void:
 	face_normal.visible = true

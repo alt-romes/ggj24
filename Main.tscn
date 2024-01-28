@@ -1,11 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://3gcpdbgne8tk"]
 
 [ext_resource type="PackedScene" uid="uid://c41pfexo2afa7" path="res://player.tscn" id="1_eoeiw"]
+[ext_resource type="PackedScene" uid="uid://bmcoermmd6lqu" path="res://body.tscn" id="1_i0wa7"]
 [ext_resource type="PackedScene" uid="uid://cvyvye0am0p2w" path="res://Stage.tscn" id="2_ljblw"]
 [ext_resource type="PackedScene" uid="uid://b3erebdcn5tnj" path="res://Models/Jester/Jester.tscn" id="3_e2ysg"]
 [ext_resource type="Material" uid="uid://dukiehtksqubn" path="res://Materials/RedGrid.tres" id="3_q3ctx"]
 [ext_resource type="PackedScene" uid="uid://biuitoloh60j3" path="res://Follower.tscn" id="6_5pvjy"]
-[ext_resource type="Shader" path="res://Shaders/Vignet.gdshader" id="8_i6xw8"]
+[ext_resource type="Material" uid="uid://7oixg0qc72w6" path="res://Shaders/VignetMat.tres" id="7_f8osw"]
 
 [sub_resource type="Environment" id="Environment_dy2mx"]
 background_mode = 1
@@ -28,19 +29,20 @@ volumetric_fog_enabled = true
 volumetric_fog_detail_spread = 6.0
 adjustment_enabled = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qmflg"]
-shader = ExtResource("8_i6xw8")
-shader_parameter/vignette_intensity = 0.4
-shader_parameter/vignette_opacity = 0.7
-shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
-
 [node name="Root" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_dy2mx")
 
+[node name="body" parent="." instance=ExtResource("1_i0wa7")]
+transform = Transform3D(-4.37114e-08, -3.48787e-16, -1, 3.48787e-16, 1, -3.48787e-16, 1, -3.48787e-16, -4.37114e-08, -8.96049, 3.5402, -16.751)
+
+[node name="body2" parent="." instance=ExtResource("1_i0wa7")]
+transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, 8.29423, 3.5402, -16.751)
+
 [node name="Player" parent="." instance=ExtResource("1_eoeiw")]
 transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, -0.0567067, 5.83813, -14.817)
+vignetmat = ExtResource("7_f8osw")
 
 [node name="Arena" type="Node3D" parent="."]
 
@@ -390,6 +392,7 @@ followTarget = NodePath("../../../Player")
 
 [node name="FirstRow6" type="Node3D" parent="."]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 4.34079, 14.7547)
+visible = false
 
 [node name="Center" type="Node3D" parent="FirstRow6"]
 
@@ -438,6 +441,7 @@ followTarget = NodePath("../../../Player")
 
 [node name="FirstRow7" type="Node3D" parent="."]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 4.83673, 18.1386)
+visible = false
 
 [node name="Center" type="Node3D" parent="FirstRow7"]
 
@@ -487,7 +491,7 @@ followTarget = NodePath("../../../Player")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-material = SubResource("ShaderMaterial_qmflg")
+material = ExtResource("7_f8osw")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
