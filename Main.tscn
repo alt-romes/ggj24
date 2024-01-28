@@ -149,7 +149,7 @@ transform = Transform3D(-3.31391e-08, -2.85041e-08, -1, -0.652098, 0.758134, -3.
 followTarget = NodePath("../Player")
 
 [node name="FirstRow" type="Node3D" parent="."]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 2.91881, -4.61749)
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 2, -4.61749)
 
 [node name="Center" type="Node3D" parent="FirstRow"]
 
@@ -197,7 +197,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124.838, 0, -49.7899)
 followTarget = NodePath("../../../Player")
 
 [node name="FirstRow2" type="Node3D" parent="."]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 3.34069, -0.163978)
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 2.42648, -0.163978)
 
 [node name="Center" type="Node3D" parent="FirstRow2"]
 
@@ -245,7 +245,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124.838, 0, -49.7899)
 followTarget = NodePath("../../../Player")
 
 [node name="FirstRow3" type="Node3D" parent="."]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 4.34155, 3.02979)
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 2.74816, 3.02979)
 
 [node name="Center" type="Node3D" parent="FirstRow3"]
 
@@ -293,7 +293,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124.838, 0, -49.7899)
 followTarget = NodePath("../../../Player")
 
 [node name="FirstRow4" type="Node3D" parent="."]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 5.38031, 6.61979)
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 3.41367, 6.61979)
 
 [node name="Center" type="Node3D" parent="FirstRow4"]
 
@@ -341,7 +341,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124.838, 0, -49.7899)
 followTarget = NodePath("../../../Player")
 
 [node name="FirstRow5" type="Node3D" parent="."]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 5.97148, 10.9242)
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 3.95739, 10.9242)
 
 [node name="Center" type="Node3D" parent="FirstRow5"]
 
@@ -389,7 +389,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124.838, 0, -49.7899)
 followTarget = NodePath("../../../Player")
 
 [node name="FirstRow6" type="Node3D" parent="."]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 6.75362, 14.9542)
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 4.34079, 14.7547)
 
 [node name="Center" type="Node3D" parent="FirstRow6"]
 
@@ -437,7 +437,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124.838, 0, -49.7899)
 followTarget = NodePath("../../../Player")
 
 [node name="FirstRow7" type="Node3D" parent="."]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 7.14752, 18.1386)
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 4.83673, 18.1386)
 
 [node name="Center" type="Node3D" parent="FirstRow7"]
 

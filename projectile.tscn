@@ -1,4 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://hs3inem8j8td"]
+[gd_scene load_steps=8 format=3 uid="uid://cy0qyxjwnm2k7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d6cmk"]
+size = Vector3(0.762299, 1.79476, 0.275452)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tnanr"]
 resource_name = "Material.002"
@@ -78,21 +81,21 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_c7gmf")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_d6cmk"]
-size = Vector3(1.26117, 3.53091, 1)
-
 [node name="projectile" type="RigidBody3D"]
 
-[node name="Cube" type="MeshInstance3D" parent="."]
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.179428, 0.54125, 0.016449)
+shape = SubResource("BoxShape3D_d6cmk")
+
+[node name="Faca" type="Node3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Cube" type="MeshInstance3D" parent="Faca"]
 transform = Transform3D(0.203357, 0, 0, 0, 0.707196, 0, 0, 0, 0.203357, 0, 0, 0)
 mesh = SubResource("ArrayMesh_w526u")
 skeleton = NodePath("")
 
-[node name="Cube_001" type="MeshInstance3D" parent="."]
+[node name="Cube_001" type="MeshInstance3D" parent="Faca"]
 transform = Transform3D(0.172925, 0, 0, 0, 1.08991, 0, 0, 0, 0.07451, 0, 1.74676, 0)
 mesh = SubResource("ArrayMesh_llv74")
 skeleton = NodePath("")
-
-[node name="Collision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.428864, 1.05614, 0)
-shape = SubResource("BoxShape3D_d6cmk")

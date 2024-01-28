@@ -43,12 +43,12 @@ func _process(delta):
 		timeToFire = 0.0;
 		var rand = randf()
 		print("random var: ", rand)
-		if rand <= 0.333:
-			$Projectil.position = spawnPoint
-			$Projectil.rotation = Vector3.ZERO
-			$Projectil.freeze = false
-			$Projectil.visible = true
-			$Projectil.apply_central_impulse(Vector3(0, 10, -10)*VEL)
-			$Projectil.angular_velocity = Vector3(3, 0, 0)
+		#if rand <= 0.333:
+		$Projectil.position = spawnPoint
+		$Projectil.rotation = Vector3.ZERO
+		$Projectil.freeze = false
+		$Projectil.visible = true
+		$Projectil.apply_central_impulse(Vector3(0, 15, -20)*VEL)
+		$Projectil.angular_velocity = Vector3(3, 0, 0)
 	else:
 		timeToFire += delta

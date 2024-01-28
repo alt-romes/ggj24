@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://biuitoloh60j3"]
+[gd_scene load_steps=6 format=3 uid="uid://biuitoloh60j3"]
 
 [ext_resource type="PackedScene" uid="uid://dei23eqbh0ak5" path="res://Models/Faces/NormalFace.tscn" id="1_bl85q"]
 [ext_resource type="Script" path="res://Follower.gd" id="1_x1sqy"]
 [ext_resource type="PackedScene" uid="uid://drgr3t8e43uu5" path="res://Models/Faces/HappyFace.tscn" id="2_vnyit"]
-[ext_resource type="PackedScene" path="res://projectile.tscn" id="4_scfan"]
+[ext_resource type="PackedScene" uid="uid://cy0qyxjwnm2k7" path="res://projectile.tscn" id="4_scfan"]
+[ext_resource type="PackedScene" uid="uid://rvitgjltespw" path="res://Models/projectile2.glb" id="5_vqixs"]
 
 [node name="Follower" type="Node3D"]
 script = ExtResource("1_x1sqy")
@@ -28,5 +29,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.50757, 2.05253)
 use_collision = true
 radius = 5.5
 
-[node name="Projectil" parent="." instance=ExtResource("4_scfan")]
+[node name="Faca" parent="." instance=ExtResource("4_scfan")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.16961e-05, 6.98304, 14.7118)
+
+[node name="projectile2" parent="." instance=ExtResource("5_vqixs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.99359)
