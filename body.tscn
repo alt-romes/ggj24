@@ -128,23 +128,23 @@ size = Vector3(2.09717, 2.08105, 1)
 [node name="body" type="RigidBody3D"]
 
 [node name="jesus" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.0701429, 0, 0, 0, 0.0696403, -0.00838209, 0, 0.00838209, 0.0696403, -0.295625, 2.4857, -0.135752)
+transform = Transform3D(0.0701429, 0, 0, 0, 0.0696403, -0.00838209, 0, 0.00838209, 0.0696403, 0.0545713, 0.370139, -0.135752)
 material_override = SubResource("StandardMaterial3D_afk14")
 mesh = SubResource("ArrayMesh_0obnw")
 skeleton = NodePath("")
 
 [node name="ropes" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.023636, -0.118276, 0.0109741, -0.0786558, -0.0355419, -0.0365196, 0.0269228, 3.49659e-08, -0.116328, -1.00143, 2.5645, -0.108023)
+transform = Transform3D(0.023636, -0.118276, 0.0109741, -0.0786558, -0.0355419, -0.0365196, 0.0269228, 3.49659e-08, -0.116328, -0.651234, 0.448938, -0.108023)
 material_override = SubResource("StandardMaterial3D_3iukm")
 mesh = SubResource("ArrayMesh_eaeg8")
 skeleton = NodePath("")
 
 [node name="cross" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.238043, 0, 0, 0, 0.0691538, -3.36308e-08, 0, 6.04561e-09, 0.384691, -0.299462, 1.16598, -0.0562824)
+transform = Transform3D(-0.238043, 0, 0, 0, 0.0691538, -3.36308e-08, 0, 6.04561e-09, 0.384691, 0.0507342, -0.94958, -0.0562824)
 material_override = SubResource("StandardMaterial3D_w1cc2")
 mesh = SubResource("ArrayMesh_x038u")
 skeleton = NodePath("")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.295142, 2.14688, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0550541, 0.0313206, 0)
 shape = SubResource("BoxShape3D_0h0vg")
